@@ -4,9 +4,8 @@ import numpy as np
 import joblib
 
 
-# ============================================================
+
 # CONFIGURATION
-# ============================================================
 
 st.set_page_config(
     page_title="Détection du paludisme sévère",
@@ -15,10 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-
-# ============================================================
 # STYLE
-# ============================================================
 
 st.markdown(
     """
@@ -97,7 +93,7 @@ st.markdown(
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 250px;
+    width: 100px;
     padding: 1rem;
     background-color: #161244;
     z-index: 999;
@@ -112,18 +108,13 @@ section[data-testid="stSidebar"] {
     unsafe_allow_html=True
 )
 
-
-# ============================================================
 # FICHIERS
-# ============================================================
+
 
 MODEL_PATH = "pipeline_lg.pkl"
 DATASET_PATH = "Dataset_Nigeria.csv"
 
-
-# ============================================================
 # CHARGEMENT DU MODELE
-# ============================================================
 
 @st.cache_resource
 def load_model():
@@ -132,10 +123,7 @@ def load_model():
 
     return model
 
-
-# ============================================================
 # CHARGEMENT DU DATASET
-# ============================================================
 
 @st.cache_data
 def load_data():
@@ -149,9 +137,7 @@ def load_data():
         return None
 
 
-# ============================================================
 # SIDEBAR
-# ============================================================
 
 st.sidebar.title("🩺Detection du Paludisme")
 
@@ -160,12 +146,8 @@ st.sidebar.caption(
 )
 
 
-
-
-
-# ============================================================
 # CHARGEMENT DU MODELE
-# ============================================================
+
 
 try:
 
@@ -180,9 +162,7 @@ except Exception as e:
     st.stop()
 
 
-# ============================================================
 # CHARGEMENT DES DONNEES
-# ============================================================
 
 
 df = load_data()
@@ -214,24 +194,14 @@ if df is None:
     st.stop()
 
 
-# ============================================================
 # TITRE
-# ============================================================
-
-
-
 
 st.warning(
     "Cette application est un prototype académique "
     "de machine learning. Elle ne remplace pas "
     "un diagnostic médical professionnel."
 )
-
-
-
-# ============================================================
 # RECUPERATION DES VARIABLES DU MODELE
-# ============================================================
 
 def get_model_features(model):
 
@@ -263,10 +233,7 @@ def get_model_features(model):
 
 features = get_model_features(model)
 
-
-# ============================================================
 # VERIFICATION DES VARIABLES
-# ============================================================
 
 if features is None:
 
@@ -277,12 +244,7 @@ if features is None:
 
     st.stop()
 
-
-
-
-# ============================================================
 # VERIFICATION DATASET
-# ============================================================
 
 missing_features = [
     feature
@@ -302,10 +264,7 @@ if missing_features:
 
     st.stop()
 
-
-# ============================================================
 # FORMULAIRE PATIENT
-# ============================================================
 
 st.subheader("Informations du patient")
 
@@ -326,11 +285,7 @@ for i, feature in enumerate(features):
 
         series = df[feature].dropna()
 
-
-        # ----------------------------------------------------
         # VARIABLE NUMERIQUE
-        # ----------------------------------------------------
-
         if pd.api.types.is_numeric_dtype(series):
 
             unique_values = sorted(
@@ -368,9 +323,7 @@ for i, feature in enumerate(features):
                 )
 
 
-        # ----------------------------------------------------
         # VARIABLE CATEGORIELLE
-        # ----------------------------------------------------
 
         else:
 
@@ -402,13 +355,7 @@ for i, feature in enumerate(features):
                 )
 
 
-
-
-
-# ============================================================
 # BOUTON PREDICTION
-# ============================================================
-
 st.divider()
 seuil = st.slider(
     "Seuil de décision (probabilité à partir de laquelle le cas est considéré positif)",
@@ -434,10 +381,7 @@ if st.button(
 
 
     try:
-
-        # ----------------------------------------------------
-        # PREDICTION et PROBABILITE
-        # ----------------------------------------------------
+   # PREDICTION et PROBABILITE
 
 
         probability = None
@@ -450,11 +394,7 @@ if st.button(
         else:
             prediction = model.predict(input_df)[0]
             st.write(f"Valeur brute : {probability}")
-
-        # ----------------------------------------------------
-        # RESULTAT
-        # ----------------------------------------------------
-
+  # RESULTAT
         st.subheader(
             "📊 Résultat de la prédiction"
         )
@@ -485,11 +425,7 @@ if st.button(
                     f"{probability * 100:.1f}%"
                 )
 
-
-        # ----------------------------------------------------
-        # BARRE DE PROBABILITE
-        # ----------------------------------------------------
-
+ # BARRE DE PROBABILITE
         if probability is not None:
 
             st.progress(
@@ -503,10 +439,7 @@ if st.button(
             f"Erreur lors de la prédiction : {e}"
         )
 
-
-# ============================================================
 # FOOTER
-# ============================================================
 
 st.sidebar.markdown(
     """
