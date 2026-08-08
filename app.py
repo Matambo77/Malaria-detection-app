@@ -93,20 +93,20 @@ st.markdown(
         color: white !important;
     }
 
+.sidebar-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 327px;
+    padding: 1rem;
+    background-color: #161244;
+    z-index: 999;
+    box-sizing: border-box;
+}
 section[data-testid="stSidebar"] {
     position: relative;
 }
 
-.sidebar-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 1rem;
-    background-color: #161244;
-    z-index: 999;
-}
     </style>
     """,
     unsafe_allow_html=True
