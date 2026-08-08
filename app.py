@@ -97,7 +97,7 @@ st.markdown(
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 200px;
+    width: 250px;
     padding: 1rem;
     background-color: #161244;
     z-index: 999;
