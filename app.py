@@ -93,11 +93,16 @@ st.markdown(
         color: white !important;
     }
 
+section[data-testid="stSidebar"] {
+    position: relative;
+}
+
 .sidebar-footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
-    width: 327px;
+    width: 100%;
+    box-sizing: border-box;
     padding: 1rem;
     background-color: #161244;
     z-index: 999;
