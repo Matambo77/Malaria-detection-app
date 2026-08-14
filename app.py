@@ -200,6 +200,8 @@ st.warning(
     "Cette application est un prototype académique "
     "de machine learning. Elle ne remplace pas "
     "un diagnostic médical professionnel."
+    "0 represente l'absence de paludisme sévère et 1 sa présence."
+    "pour le sex 0 représente le sexe féminin et 1 le sexe masculin."
 )
 # RECUPERATION DES VARIABLES DU MODELE
 
