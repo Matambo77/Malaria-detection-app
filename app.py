@@ -359,13 +359,9 @@ for i, feature in enumerate(features):
 
 # BOUTON PREDICTION
 st.divider()
-seuil = st.slider(
-    "Seuil de décision (probabilité à partir de laquelle le cas est considéré positif)",
-    min_value=0.0,
-    max_value=1.0,
-    value=0.35,
-    step=0.01
-)
+
+seuil=0.35
+
 
 if st.button(
     "🔍 Lancer la prédiction",
