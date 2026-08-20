@@ -404,12 +404,12 @@ if st.button(
         with col1:
           if int(prediction) == 1:
             st.markdown(
-            '<div class="result-card result-positive">⚠️ CAS POSITIF</div>',
+            '<div class="result-card result-positive">⚠️ Risque Élevé</div>',
             unsafe_allow_html=True
           )
           else:
            st.markdown(
-            '<div class="result-card result-negative">✅ CAS NÉGATIF</div>',
+            '<div class="result-card result-negative">✅ Risque Faible</div>',
             unsafe_allow_html=True
           )
 
